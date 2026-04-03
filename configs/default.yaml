@@ -1,0 +1,29 @@
+# default.yaml - Model and generation hyperparameters
+# Override these in your experiments as needed.
+
+model:
+  name: "Qwen/Qwen2.5-VL-7B-Instruct"
+  # Lighter alternative for faster iteration:
+  # name: "Qwen/Qwen2.5-VL-3B-Instruct"
+  quantization: "4bit"          # "4bit", "8bit", or "none"
+  dtype: "bfloat16"             # compute dtype for quantized models
+  device_map: "auto"
+
+generation:
+  # Zero-shot / greedy
+  temperature: 0.0
+  max_new_tokens: 512
+  do_sample: false
+
+  # For sampling-based strategies (CoT, self-consistency)
+  sampling_temperature: 0.7
+  top_p: 0.95
+
+self_consistency:
+  n_samples: 8
+  temperature: 0.7
+
+evaluation:
+  subset_size: 200              # number of questions for development
+  seed: 42
+  batch_size: 1                 # increase if VRAM allows

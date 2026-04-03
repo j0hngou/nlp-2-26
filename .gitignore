@@ -1,0 +1,5 @@
+outputs/
+solutions_run.py
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
